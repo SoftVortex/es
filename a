@@ -1,0 +1,80 @@
+-- Subscribe to E P I C   H A C K S
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local main = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local Frame = Instance.new("Frame")
+local INFJUMP = Instance.new("TextButton")
+local TextLabel_2 = Instance.new("TextLabel")
+
+--Properties:
+
+ScreenGui.Parent = game.CoreGui
+
+main.Name = "main"
+main.Parent = ScreenGui
+main.Active = true
+main.BackgroundColor3 = Color3.fromRGB(57, 57, 57)
+main.BorderSizePixel = 0
+main.Position = UDim2.new{-1.024, 0},{0.596, 0}
+main.Size = UDim2.new(0, 146, 0, 28)
+main.Active = true
+main.Draggable = false
+
+
+
+INFJUMP.Name = "INFJUMP"
+INFJUMP.Parent = main
+INFJUMP.BackgroundColor3 = Color3.fromRGB(11, 255, 145)
+INFJUMP.BorderSizePixel = 0
+INFJUMP.Position = UDim2.new{-1.061, 0},{1.072, 0}
+INFJUMP.Size = UDim2.new(0, 21, 0, 21)
+INFJUMP.Font = Enum.Font.Creepster
+INFJUMP.Text = ""
+INFJUMP.TextColor3 = Color3.fromRGB(5, 0, 0)
+INFJUMP.TextSize = 14.000
+INFJUMP.MouseButton1Down:connect(function()
+local Player = game:GetService'Players'.LocalPlayer;
+local UIS = game:GetService'UserInputService';
+ 
+_G.JumpHeight = 50;
+ 
+function Action(Object, Function) if Object ~= nil then Function(Object); end end
+ 
+UIS.InputBegan:connect(function(UserInput)
+    if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.Space then
+        Action(Player.Character.Humanoid, function(self)
+            if self:GetState() == Enum.HumanoidStateType.Jumping or self:GetState() == Enum.HumanoidStateType.Freefall then
+                Action(self.Parent.HumanoidRootPart, function(self)
+                    self.Velocity = Vector3.new(0, _G.JumpHeight, 0);
+                end)
+            end
+        end)
+    end
+end)
+end)
+
+-- Scripts:
+
+local function TKDWQ_fake_script() -- INFJUMP.LocalScript 
+local script = Instance.new('LocalScript', INFJUMP)
+
+
+counter = 0
+
+while wait(0.1)do
+script.Parent.BackgroundColor3 = Color3.fromHSV(zigzag(counter),1,1)
+ 
+counter = counter + 0.01
+end
+end
+coroutine.wrap(TKDWQ_fake_script)()
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "top corner left",
+	Text = "Press the green box to activate inf jump",
+	Button1 = "Ok",
+	Duration = 30
+})
